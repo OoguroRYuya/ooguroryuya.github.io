@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Nilai dan Kalkulator</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <div class="container">
+        <h2>Konversi Nilai Angka ke Nilai Huruf</h2>
+        <label for="nilaiAngka">Masukkan Nilai Angka (0-100):</label><br>
+        <input type="number" id="nilaiAngka" min="0" max="100" placeholder="Masukkan nilai..." /><br>
+        <button onclick="konversiNilai()">Konversi</button>
+        <p id="hasilKonversi"></p>
+    </div>
+
+    <div class="container">
+        <h2>Kalkulator Sederhana</h2>
+        <label for="bil1">Bilangan 1:</label><br>
+        <input type="number" id="bil1" placeholder="Masukkan Bil 1..." /><br>
+
+        <label for="bil2">Bilangan 2:</label><br>
+        <input type="number" id="bil2" placeholder="Masukkan Bil 2..." /><br>
+
+        <button onclick="operasi('+')">+</button>
+        <button onclick="operasi('-')">-</button>
+        <button onclick="operasi('*')">x</button>
+        <button onclick="operasi('/')">/</button><br>
+
+        <label for="hasil">Hasil:</label><br>
+        <input type="text" id="hasil" readonly />
+    </div>
+
+    <script>
+        function konversiNilai() {
+            var nilai = document.getElementById('nilaiAngka').value;
+            var hasil = "";
+
+            if (nilai >= 0 && nilai <= 40) {
+                hasil = "E";
+            } else if (nilai >= 41 && nilai <= 55) {
+                hasil = "D";
+            } else if (nilai >= 56 && nilai <= 60) {
+                hasil = "C";
+            } else if (nilai >= 61 && nilai <= 65) {
+                hasil = "BC";
+            } else if (nilai >= 66 && nilai <= 70) {
+                hasil = "B";
+            } else if (nilai >= 71 && nilai <= 80) {
+                hasil = "AB";
+            } else if (nilai >= 81 && nilai <= 100) {
+                hasil = "A";
+            } else {
+                hasil = "Nilai tidak valid!";
+            }
+
+            document.getElementById('hasilKonversi').innerText = "Nilai Huruf: " + hasil;
+        }
+
+        function operasi(operator) {
+            var bil1 = parseFloat(document.getElementById('bil1').value);
+            var bil2 = parseFloat(document.getElementById('bil2').value);
+            var hasil = 0;
+
+            if (isNaN(bil1) || isNaN(bil2)) {
+                document.getElementById('hasil').value = "Masukkan angka yang valid";
+                return;
+            }
+
+            switch (operator) {
+                case '+':
+                    hasil = bil1 + bil2;
+                    break;
+                case '-':
+                    hasil = bil1 - bil2;
+                    break;
+                case '*':
+                    hasil = bil1 * bil2;
+                    break;
+                case '/':
+                    if (bil2 !== 0) {
+                        hasil = bil1 / bil2;
+                    } else {
+                        hasil = "Tidak dapat dibagi dengan 0";
+                    }
+                    break;
+                default:
+                    hasil = "Operator tidak valid!";
+            }
+
+            document.getElementById('hasil').value = hasil;
+        }
+    </script>
+</body>
+</html>

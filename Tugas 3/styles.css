@@ -1,0 +1,29 @@
+body {
+    font-family: Times New Roman, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    margin-bottom: 30px;
+}
+
+input {
+    margin: 5px 0;
+    padding: 8px;
+    width: 100%;
+    max-width: 200px;
+}
+
+button {
+    margin-right: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+input[readonly] {
+    background-color: #f1f1f1;
+}
