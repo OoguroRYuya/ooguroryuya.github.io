@@ -1,0 +1,1 @@
+# ooguroryuya.github.io
